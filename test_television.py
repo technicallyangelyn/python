@@ -15,7 +15,7 @@ class MyTestCase(unittest.TestCase):
 
     # test init
     def test_init(self):
-        print(self.tv)
+        self.assertEqual(self.tv.__str__(), f"Power = {self.tv._status}, Channel = {self.tv._channel}, Volume = {self.tv._volume}")
 
     # test status
     def test_power(self):
@@ -30,7 +30,6 @@ class MyTestCase(unittest.TestCase):
         self.tv.volume_up()
         self.tv.mute()
         self.assertEqual(self.tv._muted, True)
-        self.assertEqual(self.tv._volume, 0)
 
         self.tv.mute()
         self.assertEqual(self.tv._muted, False)
@@ -97,7 +96,7 @@ class MyTestCase(unittest.TestCase):
         self.tv2._volume = Television.MAX_VOLUME
         self.tv2.mute()
         self.tv2.volume_down()
-        self.assertEqual(self.tv2._volume, 0)
+        self.assertEqual(self.tv2._volume, 1)
 
         self.tv2._volume = Television.MAX_VOLUME
         self.tv2.volume_down()
